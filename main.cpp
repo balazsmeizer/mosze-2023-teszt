@@ -4,39 +4,34 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    //NELEMENTS nincs definiálva
-    int *b = new int[NELEMENTS];
+    int* b = new int[N_ELEMENTS];
 
-    //rossz idézőjel (' '), ez char literál, nem string + hiányzik a pontosvessző
-    std::cout << '1-100 ertekek duplazasa'
+    std::cout << "1-100 ertekek duplazasa" << std::endl;
 
-    //hiányos for ciklus
-    for (int i = 0;)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        b[i] = i * 2;
+        b[i] = (i + 1) * 2;
     }
 
-    //hibás ciklusfeltétel (i; i++) → nincs felső határ
-    for (int i = 0; i; i++)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // HIBA: hiányzik a kiírandó változó és a pontosvessző
-        std::cout << "Ertek:"
-    }    
+        std::cout << "Ertek: " << b[i] << std::endl;
+    }
 
     std::cout << "Atlag szamitasa: " << std::endl;
 
-    int atlag;
+    int atlag = 0;
 
-    //vessző van ; helyett a for ciklusban
-    for (int i = 0; i < N_ELEMENTS, i++)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        //hiányzik a pontosvessző
-        atlag += b[i]
+        atlag += b[i];
     }
 
     atlag /= N_ELEMENTS;
 
     std::cout << "Atlag: " << atlag << std::endl;
+
+    delete[] b;
 
     return 0;
 }
